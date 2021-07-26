@@ -1,0 +1,16 @@
+service: serverless-hf-summarization-docker
+
+provider:
+  name: aws # provider
+  region: us-east-2 # aws region
+  memorySize: 10240 # optional, in MB, default is 1024
+  timeout: 30 # optional, in seconds, default is 6
+
+functions:
+  summarization:
+    image: xxx.dkr.ecr.us-east-2.amazonaws.com/customapi@sha256:82953a4f242cfaea3cea8f2c5d54dada595571aeaef9c92f59cde8f13d852416 #ecr url
+    events:
+      - http:
+          path: summarization # http path
+          method: post # http method
+
